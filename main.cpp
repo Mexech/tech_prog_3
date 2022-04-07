@@ -19,12 +19,6 @@ void help(int type = 1) {
     printf(menu[type]);
 }
 
-char selectType() {
-    help();
-    in();
-    return getchar();
-}
-
 int getInt(const char *msg = "Type the value:\n") {
     int result;
     printf(msg);
