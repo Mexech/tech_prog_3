@@ -90,7 +90,6 @@ int main() {
                 shapes[shape_i++] = new Trapezoid(getFloat("", fp), getFloat("", fp), getFloat("", fp), getFloat("", fp));
             else if (type == 'i')
                 shapes[shape_i++] = new Triangle(getFloat("", fp), getFloat("", fp), getFloat("", fp));
-            shapes[shape_i-1]->Display();
         }
     } else {
         shapes_size = 1;
@@ -135,10 +134,11 @@ int main() {
                 printf("Out of range\n");
                 continue;
             }
-            delete shapes[num];
+            Shape *temp = shapes[num];
             for (int i = num; i < shape_i; i++)
                 shapes[i] = shapes[i+1];
             shape_i--;
+            delete temp;
         }
         else if (c == '7') {
             int num = getInt("Type the position to be displayed(indexing starts at 0)\n");
@@ -147,6 +147,7 @@ int main() {
                 continue;
             }
             shapes[num]->Display();
+            fflush(stdout);
         }
         else if (c == '8') {
             for (int i = 0; i < shape_i; i++)
